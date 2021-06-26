@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     background: theme.palette.success.main,
   },
+  outputImage: {
+    maxWidth: '100%',
+  },
   paper: {
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4),
@@ -107,7 +110,7 @@ export function App() {
       </Paper>
       <Box />
       <Box display="flex" justifyContent="center">
-        {imgStr && <img src={imgStr} ref={imgRef} />}
+        {imgStr && <img src={imgStr} ref={imgRef} className={classes.outputImage} />}
       </Box>
       <Box display="flex" justifyContent="center" mt={4}>
         {imgStr && (
