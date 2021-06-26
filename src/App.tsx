@@ -12,6 +12,7 @@ import {
   Toolbar,
   Typography,
 } from '@material-ui/core';
+import ImageIcon from '@material-ui/icons/Image';
 import React, { useCallback, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
@@ -42,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
   },
   hidden: {
     display: 'none',
+  },
+  logo: {
+    backgroundColor: '#31419a',
   },
 }));
 
@@ -85,11 +89,9 @@ export function App() {
       <CssBaseline />
       <AppBar position="fixed">
         <Toolbar>
-          <IconButton color="inherit" aria-label="Home" edge="start">
-            <Avatar src="/android-chrome-192x192.png" alt="LB" className={classes.avatar} />
-          </IconButton>
-
-          <Typography variant="h5">Webp to PNG Converter</Typography>
+          <Typography variant="h5" align="center">
+            Webp to PNG Converter
+          </Typography>
         </Toolbar>
       </AppBar>
       <Box mb={16} />
