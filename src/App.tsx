@@ -68,8 +68,8 @@ export function App() {
 
     // convert the image to png by writing it to a canvas and reading it back
     const canvas = document.createElement('canvas');
-    canvas.height = imgRef.current.height;
-    canvas.width = imgRef.current.width;
+    canvas.height = imgRef.current.naturalHeight;
+    canvas.width = imgRef.current.naturalWidth;
     const ctx = canvas.getContext('2d');
     ctx!.drawImage(imgRef.current, 0, 0);
     const imgUrl = canvas.toDataURL('png');
