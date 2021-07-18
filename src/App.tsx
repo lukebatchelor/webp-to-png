@@ -79,10 +79,17 @@ export function App() {
       ctx!.drawImage(imgRef.current, 0, 0);
       const imgUrl = canvas.toDataURL('png');
 
-      // download the image by clicking the invisible link
-      anchor.href = imgUrl;
-      anchor.download = 'image.png';
-      anchor.click();
+      // // download the image by clicking the invisible link
+      // anchor.href = imgUrl;
+      // anchor.download = 'image.png';
+      // anchor.click();
+
+      const popup = window.open();
+      const link = document.createElement('a');
+      link.setAttribute('href', imgUrl);
+      link.setAttribute('download', 'image.png');
+      popup?.document.body.appendChild(link);
+      link.click();
     } catch (e) {
       alert(e);
     }
