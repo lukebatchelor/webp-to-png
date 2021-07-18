@@ -125,7 +125,7 @@ export function App() {
           </Button>
         )}
       </Box>
-      <a ref={downloadAnchorRef} className={classes.hidden} />
+      <a ref={downloadAnchorRef} className={classes.hidden} target="_blank" rel="noopener noreferrer" />
     </Container>
   );
 }
