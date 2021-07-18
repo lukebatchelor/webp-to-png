@@ -86,7 +86,7 @@ export function App() {
       const popup = window.open();
       const link = document.createElement('a');
       link.setAttribute('href', imgUrl);
-      link.setAttribute('download', 'image.png');
+      link.setAttribute('download', `image-${Date.now()}.png`);
       popup?.document.body.appendChild(link);
       link.click();
       popup?.close();
