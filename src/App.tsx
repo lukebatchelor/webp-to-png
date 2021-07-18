@@ -54,7 +54,6 @@ export function App() {
   const [imgStr, setImgStr] = useState<string>('');
   const [file, setFile] = useState<File>();
   const imgRef = useRef<HTMLImageElement>(null);
-  const downloadAnchorRef = useRef<HTMLAnchorElement>(null);
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
     const fr = new FileReader();
@@ -67,8 +66,7 @@ export function App() {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept: 'image/webp' });
 
   const download = () => {
-    if (!imgRef.current || !downloadAnchorRef.current) return;
-    const anchor = downloadAnchorRef.current;
+    if (!imgRef.current) return;
 
     try {
       // convert the image to png by writing it to a canvas and reading it back
@@ -79,6 +77,7 @@ export function App() {
       ctx!.drawImage(imgRef.current, 0, 0);
       const imgUrl = canvas.toDataURL('png');
 
+      // LB: Keeping this in here for posterity. This method of downloading does not work from inside a PWA
       // // download the image by clicking the invisible link
       // anchor.href = imgUrl;
       // anchor.download = 'image.png';
@@ -91,7 +90,7 @@ export function App() {
       popup?.document.body.appendChild(link);
       link.click();
     } catch (e) {
-      alert(e);
+      console.error(e);
     }
   };
 
@@ -132,7 +131,6 @@ export function App() {
           </Button>
         )}
       </Box>
-      <a ref={downloadAnchorRef} className={classes.hidden} target="_blank" rel="noopener noreferrer" />
     </Container>
   );
 }
