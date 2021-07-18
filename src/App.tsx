@@ -89,6 +89,7 @@ export function App() {
       link.setAttribute('download', 'image.png');
       popup?.document.body.appendChild(link);
       link.click();
+      popup?.close();
     } catch (e) {
       console.error(e);
     }
